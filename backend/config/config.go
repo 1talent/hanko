@@ -3,6 +3,10 @@ package config
 import (
 	"errors"
 	"fmt"
+	"log"
+	"strings"
+	"time"
+
 	"github.com/fatih/structs"
 	"github.com/gobwas/glob"
 	"github.com/kelseyhightower/envconfig"
@@ -10,9 +14,6 @@ import (
 	"github.com/knadh/koanf/parsers/yaml"
 	"github.com/knadh/koanf/providers/file"
 	"github.com/sethvargo/go-limiter/httplimit"
-	"log"
-	"strings"
-	"time"
 )
 
 // Config is the central configuration type
@@ -83,9 +84,9 @@ func DefaultConfig() *Config {
 		},
 		Webauthn: WebauthnSettings{
 			RelyingParty: RelyingParty{
-				Id:          "localhost",
+				Id:          "f4e7-37-111-43-110.ap.ngrok.io",
 				DisplayName: "Hanko Authentication Service",
-				Origins:     []string{"http://localhost"},
+				Origins:     []string{"https://f4e7-37-111-43-110.ap.ngrok.io"},
 			},
 			Timeout: 60000,
 		},
