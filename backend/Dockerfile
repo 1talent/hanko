@@ -24,6 +24,7 @@ COPY pagination pagination/
 COPY rate_limiter rate_limiter/
 COPY thirdparty thirdparty/
 COPY build_info build_info/
+COPY static static/
 
 # Build
 RUN go generate ./...
@@ -33,6 +34,7 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=$TARGETARCH go build -a -o hanko main.go
 # See https://github.com/GoogleContainerTools/distroless for details
 FROM gcr.io/distroless/static:nonroot
 WORKDIR /
+COPY --from=builder /workspace/static ./static
 COPY --from=builder /workspace/hanko .
 USER 65532:65532
 

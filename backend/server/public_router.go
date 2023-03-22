@@ -2,10 +2,11 @@ package server
 
 import (
 	"fmt"
+
 	"github.com/labstack/echo-contrib/prometheus"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	"github.com/teamhanko/hanko/backend/audit_log"
+	auditlog "github.com/teamhanko/hanko/backend/audit_log"
 	"github.com/teamhanko/hanko/backend/config"
 	"github.com/teamhanko/hanko/backend/crypto/jwk"
 	"github.com/teamhanko/hanko/backend/dto"
@@ -18,6 +19,8 @@ import (
 
 func NewPublicRouter(cfg *config.Config, persister persistence.Persister, prometheus *prometheus.Prometheus) *echo.Echo {
 	e := echo.New()
+	e.File("/.well-known/apple-app-site-association", "static/apple-app-site-association")
+
 	e.HideBanner = true
 
 	e.HTTPErrorHandler = dto.NewHTTPErrorHandler(dto.HTTPErrorHandlerConfig{Debug: false, Logger: e.Logger})
