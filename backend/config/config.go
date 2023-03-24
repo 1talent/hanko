@@ -84,9 +84,9 @@ func DefaultConfig() *Config {
 		},
 		Webauthn: WebauthnSettings{
 			RelyingParty: RelyingParty{
-				Id:          "f4e7-37-111-43-110.ap.ngrok.io",
+				Id:          "774f-37-111-43-98.ap.ngrok.io",
 				DisplayName: "Hanko Authentication Service",
-				Origins:     []string{"https://f4e7-37-111-43-110.ap.ngrok.io"},
+				Origins:     []string{"https://774f-37-111-43-98.ap.ngrok.io"},
 			},
 			Timeout: 60000,
 		},
